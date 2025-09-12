@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+
+{% block title %}Home | M.G Web Design{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<section class="hero-text">
+    <h2>Modern Websites for Your Business</h2>
+    <p>We create visually stunning, fully responsive websites tailored to your brand and goals.</p>
+    <a class="btn" href="/contact">Get Started</a>
+</section>
+
+<section class="intro-owner">
+    <div class="intro-text">
+        <h2>Hi, I'm Milos Gajevic</h2>
+        <p>I design and build modern websites from start to finish, fully tailored to your needs.</p>
+    </div>
+    <div class="intro-image">
+        <a href="/about">
+            <img src="{{ url_for('static', filename='images/milos.png') }}" alt="Milos Gajevic">
+        </a>
+    </div>
+</section>
+
+<section class="why-choose">
+    <h2>Why Choose M.G Web Design?</h2>
+    <div class="why-grid">
+        <div class="why-item">
+            <div class="why-card">
+                <div class="icon-box">
+                    <img src="{{ url_for('static', filename='images/design.avif') }}" alt="Design Icon">
+                </div>
+                <p>Modern and responsive designs</p>
+            </div>
+        </div>
+        <div class="why-item">
+            <div class="why-card">
+                <div class="icon-box">
+                    <img src="{{ url_for('static', filename='images/custom.avif') }}" alt="Custom Icon">
+                </div>
+                <p>Custom solutions for every client</p>
+            </div>
+        </div>
+        <div class="why-item">
+            <div class="why-card">
+                <div class="icon-box">
+                    <img src="{{ url_for('static', filename='images/seo.avif') }}" alt="SEO Icon">
+                </div>
+                <p>SEO-friendly websites</p>
+            </div>
+        </div>
+        <div class="why-item">
+            <div class="why-card">
+                <div class="icon-box">
+                    <img src="{{ url_for('static', filename='images/support.avif') }}" alt="Support Icon">
+                </div>
+                <p>Fast delivery and excellent support</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="services">
+    <h2>Our Services</h2>
+    <div class="service-cards">
+        <div class="card">
+            <h3>Web Design</h3>
+            <li>Modern and responsive designs</li>
+        </div>
+        <div class="card">
+            <h3>UI/UX</h3>
+            <p>User-friendly interfaces that provide excellent experience.</p>
+        </div>
+        <div class="card">
+            <h3>SEO Optimization</h3>
+            <p>Make your site rank higher and reach more customers.</p>
+        </div>
+    </div>
+</section>
+
+<section class="testimonials">
+    <h2>What Our Clients Say</h2>
+    <div class="testimonial-cards">
+        <div class="card">
+            <p>"M.G Web Design transformed our outdated website into something amazing!"</p>
+            <span>- Jane Doe, CEO</span>
+        </div>
+        <div class="card">
+            <p>"Professional, creative, and fast. Highly recommend their team!"</p>
+            <span>- John Smith, Entrepreneur</span>
+        </div>
+    </div>
+</section>
+
+<section class="cta">
+    <h2>Ready to start your project?</h2>
+    <a class="btn" href="/contact">Contact Us Today</a>
+</section>
+
+{% endblock %}

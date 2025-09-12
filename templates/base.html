@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}M.G Web Design{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    {% block head %}{% endblock %}
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <a href="/" class="logo">
+                <img src="{{ url_for('static', filename='images/MG_logo.png') }}" alt="M.G Web Design Logo">
+            </a>
+            <nav>
+                <a href="/" class="nav-link">Home</a>
+                <a href="/about" class="nav-link">About</a>
+                <a href="/contact" class="nav-link">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-logo">
+            <img src="{{ url_for('static', filename='images/MG_logo.png') }}" alt="M.G Web Design Logo">
+        </div>
+        <nav class="footer-nav">
+            <a href="/">Home</a>
+            <a href="/about">About</a>
+            <a href="/contact">Contact</a>
+        </nav>
+        <div class="footer-social">
+            <a href="#"><img src="{{ url_for('static', filename='images/facebook.svg') }}" alt="Facebook"></a>
+            <a href="#"><img src="{{ url_for('static', filename='images/twitter.svg') }}" alt="Twitter"></a>
+            <a href="#"><img src="{{ url_for('static', filename='images/instagram.svg') }}" alt="Instagram"></a>
+        </div>
+    </div>
+    <p class="footer-copy">© 2025 M.G Web Design. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

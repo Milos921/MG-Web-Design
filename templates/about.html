@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}About | M.G Web Design{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/about.css') }}">
+{% endblock %}
+
+{% block content %}
+<section class="about">
+    <div class="about-container">
+        <div class="about-text">
+            <h2>About Me</h2>
+            <p>Hi, I'm <strong>Milos Gajevic</strong>, a dedicated web designer and developer with years of experience creating <strong>modern, responsive, and visually striking websites</strong>. My passion lies in turning complex ideas into intuitive digital experiences that not only look great but also deliver measurable results for businesses and individuals alike.</p>
+            
+            <p>I believe that every website should tell a story. That’s why I take a <strong>client-first approach</strong>, ensuring that your brand’s identity, values, and goals are reflected in every pixel. From <strong>initial concept to final launch</strong>, I focus on crafting websites that are <strong>not only aesthetically pleasing but also fully functional, accessible, and user-friendly</strong>.</p>
+            
+            <p>I work closely with clients to understand their unique vision and requirements. Every project is customized to <strong>maximize impact, improve user experience, and achieve business objectives</strong>. Whether you’re a startup looking to establish your online presence, or an established company seeking a modern redesign, I bring creativity and technical expertise to every project.</p>
+            
+            <h3>Specialties & Technologies</h3>
+            <ul>
+                <li><strong>Responsive Web Design:</strong> Ensuring websites look perfect on every device.</li>
+                <li><strong>UI/UX Design:</strong> Designing intuitive interfaces that guide users seamlessly.</li>
+                <li><strong>SEO-Friendly Development:</strong> Building websites that perform well on search engines.</li>
+                <li><strong>Custom Solutions:</strong> Tailored functionality to meet your unique needs.</li>
+                <li><strong>Performance Optimization:</strong> Fast-loading websites that engage visitors.</li>
+            </ul>
+
+            <p>I am proficient in <strong>HTML, CSS, JavaScript, Flask, and modern front-end frameworks</strong>, combining clean code with elegant design to bring ideas to life efficiently.</p>
+
+            <h3>Why Work With Me</h3>
+            <p>I am committed to <strong>transparent communication, timely delivery, and exceeding expectations</strong>. I aim to build lasting relationships with my clients by delivering results that <strong>grow their business and enhance their online presence</strong>.</p>
+
+            <p class="cta-text">Ready to take your website to the next level? Let’s collaborate and create something extraordinary together.</p>
+    </div>
+</section>
+
+{% endblock %}
