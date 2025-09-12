@@ -1,0 +1,1 @@
+web: python prvi_program.py

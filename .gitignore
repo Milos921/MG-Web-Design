@@ -1,26 +1,26 @@
-# Python bytecode
 __pycache__/
 *.py[cod]
 *$py.class
 
-# Virtual environment
 venv/
 .env/
 
-# VS Code
 .vscode/
 
-# System files
 .DS_Store
 Thumbs.db
 
-# Logs
 *.log
 
-# IDE files
 .idea/
 *.sublime-project
 *.sublime-workspace
 
-# Others
 *.sqlite3
+
+node_modules/
+build/
+dist/
+
+*.tmp
+*.bak
