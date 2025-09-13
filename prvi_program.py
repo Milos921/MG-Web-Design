@@ -1,5 +1,6 @@
-from flask import Flask, render_template, request, flash, redirect, url_for
+from flask import Flask, render_template, request, flash, redirect, url_for, Response
 from flask_mail import Mail, Message
+from datetime import date
 import os
 
 app = Flask(__name__)
@@ -52,6 +53,30 @@ def contact():
 
     return render_template("contact.html")
 
+@app.route("/sitemap.xml", methods=['GET'])
+def sitemap():
+    pages = [
+        url_for('home', _external=True),
+        url_for('about', _external=True),
+        url_for('contact', _external=True)
+    ]
+
+    sitemap_xml = '<?xml version="1.0" encoding="UTF-8"?>\n'
+    sitemap_xml += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+
+    for page in pages:
+        sitemap_xml += "  <url>\n"
+        sitemap_xml += f"    <loc>{page}</loc>\n"
+        sitemap_xml += f"    <lastmod>{date.today()}</lastmod>\n"
+        sitemap_xml += "    <priority>0.8</priority>\n"
+        sitemap_xml += "  </url>\n"
+
+    sitemap_xml += "</urlset>\n"
+
+    return Response(sitemap_xml, mimetype='application/xml')
+
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
+    import os
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
