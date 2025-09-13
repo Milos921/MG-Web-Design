@@ -139,6 +139,39 @@ main {
     color: #aaa;
 }
 
+/* Footer Social Icons */
+.footer-social {
+    display: flex;
+    gap: 15px; /* razmak između ikonica */
+    margin-top: 10px;
+}
+
+.footer-social a svg {
+    width: 30px;
+    height: 30px;
+    fill: #555; /* osnovna boja ikonica */
+    transition: fill 0.3s, transform 0.3s;
+}
+
+.footer-social a:hover svg {
+    fill: #1da1f2; /* boja na hover, možeš zamijeniti: LinkedIn plava, Instagram gradient, GitHub crna */
+    transform: scale(1.2); /* malo se uveća pri hoveru */
+}
+
+/* Ako želiš različite boje za svaku ikonicu */
+.footer-social a[aria-label="LinkedIn"] svg:hover {
+    fill: #0077b5; /* LinkedIn plava */
+}
+
+.footer-social a[aria-label="Instagram"] svg:hover {
+    fill: #e4405f; /* Instagram pink */
+}
+
+.footer-social a[aria-label="GitHub"] svg:hover {
+    fill: #00f320; /* GitHub crna */
+}
+
+
 @media (max-width: 1024px) {
     /* HERO */
     .hero-text {
