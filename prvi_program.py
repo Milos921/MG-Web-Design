@@ -6,8 +6,6 @@ import os
 app = Flask(__name__)
 app.secret_key = os.environ.get("SECRET_KEY", "supersecretkey123")  # koristimo env var za Render
 
-# ======== Flask-Mail configuration ========
-# ======== Flask-Mail configuration ========
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 587
 app.config['MAIL_USE_TLS'] = True
@@ -18,7 +16,6 @@ app.config['MAIL_DEFAULT_SENDER'] = os.environ.get("MAIL_USERNAME")  # ovo dodaj
 
 mail = Mail(app)
 
-# ======== Routes ========
 @app.route("/")
 def home():
     return render_template("home.html")
@@ -39,7 +36,6 @@ def contact():
             flash("Please fill in all required fields!", "error")
             return redirect(url_for('contact'))
 
-        # Send email
         msg = Message(
         subject=f"New Booking from {name}",
         recipients=[app.config['MAIL_USERNAME']],  # primaš na svoj mail

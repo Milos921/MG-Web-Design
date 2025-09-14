@@ -64,8 +64,8 @@ form.addEventListener('submit', function(event) {
     const message = document.getElementById('message').value.trim();
 
     if (!name || !email || !message) {
-        event.preventDefault(); // zaustavlja slanje
-        alert("Please fill in all required fields!"); // možeš kasnije zameniti custom balončićem
+        event.preventDefault();
+        alert("Please fill in all required fields!");
     }
 });
 </script>
