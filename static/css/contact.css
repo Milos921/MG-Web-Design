@@ -146,55 +146,53 @@
     }
 }
 
-/* Flash messages container */
+/* ===== Flash messages ===== */
 .flash-messages {
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    z-index: 1000;
-    text-align: center;
+    z-index: 9999;
     width: 90%;
     max-width: 400px;
 }
 
-/* Individual flash messages */
 .flash {
-    padding: 15px 20px;
-    border-radius: 8px;
+    padding: 20px 30px;
     margin: 10px 0;
-    font-size: 16px;
+    border-radius: 8px;
     color: #fff;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-    animation: fadeInOut 4s ease forwards;
+    font-size: 1rem;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    animation: fadeInOut 4s forwards;
 }
 
-/* Success */
 .flash.success {
-    background-color: #28a745; /* zeleni balončić */
+    background-color: #28a745;  /* zeleno */
 }
 
-/* Error */
 .flash.error {
-    background-color: #dc3545; /* crveni balončić */
+    background-color: #dc3545;  /* crveno */
 }
 
-/* Animation: pojavi se i nestane */
+/* Animacija: pojavljuje se i nestaje */
 @keyframes fadeInOut {
-    0% { opacity: 0; transform: translate(-50%, -60%); }
-    10% { opacity: 1; transform: translate(-50%, -50%); }
-    90% { opacity: 1; transform: translate(-50%, -50%); }
-    100% { opacity: 0; transform: translate(-50%, -40%); }
+    0% {opacity: 0; transform: translate(-50%, -60%);}
+    10% {opacity: 1; transform: translate(-50%, -50%);}
+    90% {opacity: 1; transform: translate(-50%, -50%);}
+    100% {opacity: 0; transform: translate(-50%, -40%);}
 }
 
-/* Media queries za manje ekrane */
+/* ===== Responsive ===== */
 @media (max-width: 768px) {
     .flash-messages {
         width: 95%;
     }
 
     .flash {
-        font-size: 14px;
-        padding: 12px 15px;
+        font-size: 0.9rem;
+        padding: 15px 20px;
     }
 }
+
