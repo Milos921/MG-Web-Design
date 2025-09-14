@@ -9,15 +9,15 @@
 {% block content %}
 <section class="contact-section">
     <div class="contact-left">
-        <form class="contact-form" action="/contact" method="POST">
+        <form class="contact-form" action="/contact" method="POST" id="contactForm">
 
         {% with messages = get_flashed_messages(with_categories=true) %}
             {% if messages %}
                  <div class="flash-messages">
                     {% for category, message in messages %}
-                <div class="flash {{ category }}">
-                    {{ message }}
-                </div>
+                        <div class="flash {{ category }}">
+                            {{ message }}
+                        </div>
                     {% endfor %}
                 </div>
             {% endif %}
@@ -54,4 +54,19 @@
         <p>From responsive designs to SEO-friendly websites, I make sure your online presence is strong, modern, and tailored to your brand.</p>
     </div>
 </section>
+
+<script>
+const form = document.getElementById('contactForm');
+
+form.addEventListener('submit', function(event) {
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const message = document.getElementById('message').value.trim();
+
+    if (!name || !email || !message) {
+        event.preventDefault(); // zaustavlja slanje
+        alert("Please fill in all required fields!"); // možeš kasnije zameniti custom balončićem
+    }
+});
+</script>
 {% endblock %}
