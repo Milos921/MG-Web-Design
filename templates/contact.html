@@ -10,6 +10,20 @@
 <section class="contact-section">
     <div class="contact-left">
         <form class="contact-form" action="/contact" method="POST">
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                 <div class="flash-messages">
+                    {% for category, message in messages %}
+                <div class="flash {{ category }}">
+                    {{ message }}
+                </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+
             <h2>Contact Me</h2>
 
             <div class="form-group">

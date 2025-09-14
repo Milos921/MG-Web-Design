@@ -145,3 +145,40 @@
         font-size: 1.3rem;
     }
 }
+
+.flash-messages {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+}
+
+.flash {
+    padding: 15px 25px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    color: white;
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    animation: fadein 0.5s, fadeout 0.5s 4s;
+}
+
+/* Boje po kategoriji */
+.flash.success {
+    background-color: #28a745; /* zeleni za uspjeh */
+}
+
+.flash.error {
+    background-color: #dc3545; /* crveni za grešku */
+}
+
+/* Animacija za fade in/out */
+@keyframes fadein {
+    from {opacity: 0; top: 0;}
+    to {opacity: 1; top: 20px;}
+}
+@keyframes fadeout {
+    from {opacity: 1; top: 20px;}
+    to {opacity: 0; top: 0;}
+}
+
