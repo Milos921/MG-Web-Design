@@ -9,20 +9,7 @@
 {% block content %}
 <section class="contact-section">
     <div class="contact-left">
-        <form class="contact-form" action="/contact" method="POST" id="contactForm">
-
-        {% with messages = get_flashed_messages(with_categories=true) %}
-            {% if messages %}
-                 <div class="flash-messages">
-                    {% for category, message in messages %}
-                        <div class="flash {{ category }}">
-                            {{ message }}
-                        </div>
-                    {% endfor %}
-                </div>
-            {% endif %}
-        {% endwith %}
-
+        <form class="contact-form" id="contactForm">
             <h2>Contact Me</h2>
 
             <div class="form-group">
@@ -47,6 +34,9 @@
 
             <button type="submit" class="btn">Send Message</button>
         </form>
+
+        <!-- Flash messages container -->
+        <div class="flash-messages" id="flashContainer"></div>
     </div>
 
     <div class="contact-right">
@@ -55,4 +45,38 @@
     </div>
 </section>
 
+<script>
+const form = document.getElementById('contactForm');
+const flashContainer = document.getElementById('flashContainer');
+
+form.addEventListener('submit', function(event) {
+    event.preventDefault();  // sprječavamo reload
+
+    const formData = new FormData(form);
+
+    fetch("/contact", {
+        method: "POST",
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        const div = document.createElement('div');
+        div.className = `flash ${data.status}`;
+        div.textContent = data.message;
+        flashContainer.appendChild(div);
+
+        setTimeout(() => div.remove(), 4000);
+
+        if(data.status === "success") form.reset();
+    })
+    .catch(err => {
+        console.error("Error:", err);
+        const div = document.createElement('div');
+        div.className = "flash error";
+        div.textContent = "An unexpected error occurred.";
+        flashContainer.appendChild(div);
+        setTimeout(() => div.remove(), 4000);
+    });
+});
+</script>
 {% endblock %}
