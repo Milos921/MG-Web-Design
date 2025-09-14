@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, Response, jsonify
+from flask import Flask, render_template, request, Response, jsonify, url_for
 from flask_mail import Mail, Message
 from datetime import date
 import os
@@ -6,7 +6,6 @@ import os
 app = Flask(__name__)
 app.secret_key = os.environ.get("SECRET_KEY", "supersecretkey123")
 
-# ======== Flask-Mail configuration ========
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 587
 app.config['MAIL_USE_TLS'] = True
@@ -16,7 +15,6 @@ app.config['MAIL_DEFAULT_SENDER'] = os.environ.get("MAIL_USERNAME")
 
 mail = Mail(app)
 
-# ======== Routes ========
 @app.route("/")
 def home():
     return render_template("home.html")
@@ -25,28 +23,32 @@ def home():
 def about():
     return render_template("about.html")
 
-@app.route("/contact", methods=['POST'])
+@app.route("/contact", methods=['GET', 'POST'])
 def contact():
-    name = request.form.get('name')
-    email = request.form.get('email')
-    phone = request.form.get('phone')
-    message = request.form.get('message')
+    if request.method == 'POST':
+        name = request.form.get('name')
+        email = request.form.get('email')
+        phone = request.form.get('phone')
+        message = request.form.get('message')
 
-    if not name or not email or not message:
-        return jsonify(status="error", message="Please fill in all required fields!")
+        if not name or not email or not message:
+            return jsonify(status="error", message="Please fill in all required fields!")
 
-    msg = Message(
-        subject=f"New Booking from {name}",
-        recipients=[app.config['MAIL_USERNAME']],
-        reply_to=email,
-        body=f"Name: {name}\nEmail: {email}\nPhone: {phone}\nMessage:\n{message}"
-    )
+        msg = Message(
+            subject=f"New Booking from {name}",
+            recipients=[app.config['MAIL_USERNAME']],
+            reply_to=email,
+            body=f"Name: {name}\nEmail: {email}\nPhone: {phone}\nMessage:\n{message}"
+        )
 
-    try:
-        mail.send(msg)
-        return jsonify(status="success", message="Thank you! Your message has been sent.")
-    except Exception as e:
-        return jsonify(status="error", message=f"An error occurred: {e}")
+        try:
+            mail.send(msg)
+            return jsonify(status="success", message="Thank you! Your message has been sent.")
+        except Exception as e:
+            return jsonify(status="error", message=f"An error occurred: {e}")
+
+    # GET request - render the page
+    return render_template("contact.html")
 
 @app.route("/sitemap.xml", methods=['GET'])
 def sitemap():
@@ -68,6 +70,7 @@ def sitemap():
 
     sitemap_xml += "</urlset>\n"
     return Response(sitemap_xml, mimetype='application/xml')
+
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
